@@ -70,11 +70,11 @@
         <argument
             android:name="myarg"
             android:defaultValue="Android!"/>
-        <!-- TODO STEP 11.1 - Add a deep link to www.example.com/{myarg}/ -->
+        <!-- STEP 11.1 - Add a deep link to www.example.com/{myarg}/ -->
 
-        <!--<deepLink app:uri="www.example.com/{myarg}" />-->
+        <deepLink app:uri="www.example.com/{myarg}" />
 
-        <!-- TODO END STEP 11.1 -->
+        <!-- END STEP 11.1 -->
     </fragment>
 
     <fragment
@@ -82,4 +82,9 @@
         android:name="com.example.android.codelabs.navigation.SettingsFragment"
         android:label="settings_fragment"
         tools:layout="@layout/settings_fragment" />
+    <fragment
+        android:id="@+id/shopping_dest"
+        android:name="com.example.android.codelabs.navigation.ShoppingFragment"
+        android:label="shopping_fragment"
+        tools:layout="@layout/shopping_fragment" />
 </navigation>

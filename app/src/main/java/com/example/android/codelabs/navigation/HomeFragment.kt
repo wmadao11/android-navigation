@@ -20,11 +20,9 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Button
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavOptions
-import androidx.navigation.NavOptionsBuilder
-import androidx.navigation.Navigation
+import androidx.navigation.*
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.navOptions
+import androidx.navigation.ui.onNavDestinationSelected
 
 /**
  * Fragment used to show how to navigate to another destination
@@ -69,12 +67,20 @@ class HomeFragment : Fragment() {
 //        view.findViewById<Button>(R.id.navigate_action_button)?.setOnClickListener(
 //            Navigation.createNavigateOnClickListener(R.id.next_action, null)
 //        )
-        view.findViewById<Button>(R.id.navigate_action_button)?.setOnClickListener(
+        button?.setOnClickListener(
             Navigation.createNavigateOnClickListener(HomeFragmentDirections.nextAction(1))
         )
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.main_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Have the NavigationUI look for an action or destination matching the menu
+        // item id and navigate there if found.
+        // Otherwise, bubble up to the parent.
+        return item.onNavDestinationSelected(findNavController())
+                || super.onOptionsItemSelected(item)
     }
 }
